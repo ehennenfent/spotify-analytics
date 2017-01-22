@@ -1,8 +1,9 @@
 
 var pitch_classes = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'A♭', 'A', 'B♭', 'B'];
+var pitch_counter = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 function parameterCompare(left, right, key){
-  if (left[key] < right[key]){return -1;}
-  if (left[key] > right[key]){return 1;}
+  if (left[key] > right[key]){return -1;}
+  if (left[key] < right[key]){return 1;}
   return 0;
 }
 function unixTime(){return Math.floor(Date.now() / 1000);}
@@ -35,7 +36,6 @@ var refreshToken = function(){
         return response.json();
     }).then(function(raw){
         var obj = JSON.parse(raw);
-        console.log(obj);
         localStorage.setItem('access_token', obj.access_token);
         localStorage.setItem('refresh_token', obj.refresh_token);
         localStorage.setItem('last_timestamp', unixTime());
@@ -65,7 +65,6 @@ var auth = new Promise(function(resolve, reject){
 });
 
 var multisort = function(sample){
-    console.log(sample);
     sample = sample.audio_features;
     window.danceable = sample.slice();
     window.fastest = sample.slice();
@@ -85,8 +84,72 @@ var multisort = function(sample){
         return parameterCompare(a,b,'key');
     });
 
+    for (var i = 0; i < 50; i++){
+        thiskey = window.key[i];
+        pitch_counter[thiskey.key]++;
+    }
+    var max_index;
+    var max = 0;
+    for (index in pitch_counter){
+        if(pitch_counter[index] > max){
+            max = pitch_counter[index];
+            max_index = index;
+        }
+    }
+
+    var fastL = [];
+    var slowL = [];
+    var happyL = [];
+    var sadL = [];
+    var danceL = [];
+
+    for(var i = 0; i < 10; i++){
+        fastL[i] = getTrackByID(window.fastest[i].id);
+        slowL[i] = getTrackByID(window.fastest[window.fastest.length - i - 1].id);
+        happyL[i] = getTrackByID(window.happiness[i].id);
+        sadL[i] = getTrackByID(window.happiness[window.happiness.length - i - 1].id);
+        danceL[i] = getTrackByID(window.danceable[i].id);
+    }
+
     window.location = "#main";
     window.scrollBy(0,-50);
+
+    var vuefast = new Vue({
+      el: '#vuefast',
+      data: {
+        tracks: fastL
+      }
+    });
+    var vueslow = new Vue({
+      el: '#vueslow',
+      data: {
+        tracks: slowL
+      }
+    });
+    var vuedance = new Vue({
+      el: '#vuedance',
+      data: {
+        tracks: danceL
+      }
+    });
+    var vuehappy = new Vue({
+      el: '#vuehappy',
+      data: {
+        tracks: happyL
+      }
+    });
+    var vuesad = new Vue({
+      el: '#vuesad',
+      data: {
+        tracks: sadL
+      }
+    });
+    var vuekey = new Vue({
+      el: '#vuekey',
+      data: {
+        majorKey: pitch_classes[max_index]
+      }
+    });
 }
 
 var attach_to_dom = function(songs){

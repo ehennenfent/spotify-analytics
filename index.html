@@ -68,7 +68,7 @@
                                         <h2 style="padding-top: 20px; padding-left: 70px;">Your top 10 tracks:</h2>
                                 </header>
                                 <!-- <h2>Your top 10 tracks:</h2> -->
-                                <div id="vuetest" class="inner" style="display: inline-flex; overflow: scroll; width: 100%; max-width: 100%; overflow-y: hidden; padding-top: 0px">
+                                <div id="vuetest" class="trackDisplay inner">
                                     <div style="text-align: center" v-for="track in tracks">
                                         <a v-bind:href="track.external_urls.spotify" style="border-bottom: none"><img style="height: 200px; width: 200px; margin: 20px; flex-shrink: 0;" v-bind:src="track.album.images[0].url"></img>
                                         <div>{{track.name}}</div></a>
@@ -84,8 +84,13 @@
                                     </span>
                                     <header class="major">
                                         <h3>Gotta go fast...</h3>
-                                        <p>Ipsum dolor sit amet</p>
                                     </header>
+                                    <div id="vuefast" class="trackDisplay inner">
+                                        <div style="text-align: center" v-for="track in tracks">
+                                            <a v-bind:href="track.external_urls.spotify" style="border-bottom: none"><img style="height: 200px; width: 200px; margin: 20px; flex-shrink: 0;" v-bind:src="track.album.images[0].url"></img>
+                                            <div>{{track.name}}</div></a>
+                                        </div>
+                                    </div>
                                 </article>
                                 <article id="slow">
                                     <span class="image">
@@ -93,18 +98,28 @@
                                     </span>
                                     <header class="major">
                                         <h3>or slow.</h3>
-                                        <p>Feugiat amet tempus</p>
                                     </header>
+                                    <div id="vueslow" class="trackDisplay inner">
+                                        <div style="text-align: center" v-for="track in tracks">
+                                            <a v-bind:href="track.external_urls.spotify" style="border-bottom: none"><img style="height: 200px; width: 200px; margin: 20px; flex-shrink: 0;" v-bind:src="track.album.images[0].url"></img>
+                                            <div>{{track.name}}</div></a>
+                                        </div>
+                                    </div>
                                 </article>
-                                
+
                                 <article id="dance">
                                     <span class="image">
                                         <img src="images/pic03.jpg" alt="" />
                                     </span>
                                     <header class="major">
                                         <h3>Songs that make you want to groove:</h3>
-                                        <p>Lorem etiam nullam</p>
                                     </header>
+                                    <div id="vuedance" class="trackDisplay inner">
+                                        <div style="text-align: center" v-for="track in tracks">
+                                            <a v-bind:href="track.external_urls.spotify" style="border-bottom: none"><img style="height: 200px; width: 200px; margin: 20px; flex-shrink: 0;" v-bind:src="track.album.images[0].url"></img>
+                                            <div>{{track.name}}</div></a>
+                                        </div>
+                                    </div>
                                 </article>
                                 <article id="key">
                                     <span class="image">
@@ -112,7 +127,7 @@
                                     </span>
                                     <header class="major">
                                         <h3>Your most common key:</h3>
-                                        <p>Nisl sed aliquam</p>
+                                        <div id="vuekey"><h1>{{majorKey}}</h1></div>
                                     </header>
                                 </article>
 
@@ -122,8 +137,13 @@
                                     </span>
                                     <header class="major">
                                         <h3>Your Happiest:</h3>
-                                        <p>Ipsum dolor sit amet</p>
                                     </header>
+                                    <div id="vuehappy" class="trackDisplay inner">
+                                        <div style="text-align: center" v-for="track in tracks">
+                                            <a v-bind:href="track.external_urls.spotify" style="border-bottom: none"><img style="height: 200px; width: 200px; margin: 20px; flex-shrink: 0;" v-bind:src="track.album.images[0].url"></img>
+                                            <div>{{track.name}}</div></a>
+                                        </div>
+                                    </div>
                                 </article>
                                 <article id="sad">
                                     <span class="image">
@@ -131,10 +151,15 @@
                                     </span>
                                     <header class="major">
                                         <h3>Your Saddest:</h3>
-                                        <p>feugiat amet tempus</p>
                                     </header>
+                                    <div id="vuesad" class="trackDisplay inner">
+                                        <div style="text-align: center" v-for="track in tracks">
+                                            <a v-bind:href="track.external_urls.spotify" style="border-bottom: none"><img style="height: 200px; width: 200px; margin: 20px; flex-shrink: 0;" v-bind:src="track.album.images[0].url"></img>
+                                            <div>{{track.name}}</div></a>
+                                        </div>
+                                    </div>
                                 </article>
-                                
+
                             </section>
 
                     </div>
