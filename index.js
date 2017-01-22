@@ -115,8 +115,6 @@ var multisort = function(sample){
         danceL[i] = getTrackByID(window.danceable[i].id);
     }
 
-    window.location = "#main";
-    window.scrollBy(0,-50);
 
     var vuefast = new Vue({
       el: '#vuefast',
@@ -154,6 +152,15 @@ var multisort = function(sample){
         majorKey: pitch_classes[max_index]
       }
     });
+
+    window.location = "#main";
+    window.scrollBy(0,-50);
+
+    var head = document.getElementById('mainHeader');
+    head.innerHTML = "We've finished crunching the numbers.";
+    head = document.getElementById('subHeader');
+    head.innerHTML = "Your tracks are below.";
+
 }
 
 var attach_to_dom = function(songs){
@@ -197,11 +204,12 @@ if(query.code){
     content.style.display = "block";
     var head = document.getElementById('mainHeader');
     head.innerHTML = "We're analyzing your tracks now...";
-}
 
-auth.then(function(){
-    api('/me/top/tracks?limit=50', attach_to_dom);
-}).catch(function(error){
-    console.log('Auth failed. Sad!');
-    api('/me/top/tracks?limit=50', attach_to_dom);
-});
+    auth.then(function(){
+        api('/me/top/tracks?limit=50', attach_to_dom);
+    }).catch(function(error){
+        console.log('Auth failed. Sad!');
+        api('/me/top/tracks?limit=50', attach_to_dom);
+    });
+
+}
