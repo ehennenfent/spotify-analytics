@@ -129,7 +129,7 @@ if(query.code){
     var content = document.getElementById('main');
     content.style.display = "block";
     var head = document.getElementById('mainHeader');
-    head.innerHTML = "We're retrieving your top tracks now...";
+    head.innerHTML = "We're analyzing your tracks now...";
 }
 
 auth.then(function(){
