@@ -52,7 +52,11 @@ var auth = new Promise(function(resolve, reject){
         return response.json();
     }).then(function(raw){
         var obj = JSON.parse(raw);
-        // console.log(obj);
+        console.log(obj);
+        if(obj.error){
+            reject('Failed to Authorize');
+            return;
+        }
         localStorage.setItem('access_token', obj.access_token);
         localStorage.setItem('refresh_token', obj.refresh_token);
         localStorage.setItem('last_timestamp', unixTime());
@@ -198,5 +202,6 @@ if(query.code){
 auth.then(function(){
     api('/me/top/tracks?limit=50', attach_to_dom);
 }).catch(function(error){
-    console.log('Sad!');
+    console.log('Auth failed. Sad!');
+    api('/me/top/tracks?limit=50', attach_to_dom);
 });
