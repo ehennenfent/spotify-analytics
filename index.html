@@ -70,8 +70,8 @@
                                 <!-- <h2>Your top 10 tracks:</h2> -->
                                 <div id="vuetest" class="inner" style="display: inline-flex; overflow: scroll; width: 100%; max-width: 100%; overflow-y: hidden; padding-top: 0px">
                                     <div style="text-align: center" v-for="track in tracks">
-                                        <img style="height: 200px; width: 200px; margin: 20px; flex-shrink: 0;" v-bind:src="track.album.images[0].url"></img>
-                                        <div>{{track.name}}</div>
+                                        <a v-bind:href="track.external_urls.spotify" style="border-bottom: none"><img style="height: 200px; width: 200px; margin: 20px; flex-shrink: 0;" v-bind:src="track.album.images[0].url"></img>
+                                        <div>{{track.name}}</div></a>
                                     </div>
                                 </div>
                             </section>
