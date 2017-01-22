@@ -3412,15 +3412,15 @@
 		display: -webkit-flex;
 		display: -ms-flex;
 		display: flex;
-		padding: 6em 0 2em 0 ;
+		padding: 6em 0 0em 0 ;
 		background-attachment: fixed;
 		background-position: center;
 		background-repeat: no-repeat;
 		background-size: cover;
-		border-bottom: 0 !important;
+		/*border-bottom: 0 !important;*/
 		cursor: default;
-		height: 60vh;
-		margin-bottom: -3.25em;
+		height: 100vh;
+		/*margin-bottom: -3.25em;*/
 		max-height: 32em;
 		min-height: 22em;
 		position: relative;
@@ -3623,7 +3623,7 @@
 	}
 
 		#main > * {
-			border-top: solid 1px rgba(212, 212, 255, 0.1);
+			/*border-top: solid 1px rgba(212, 212, 255, 0.1);*/
 		}
 
 			#main > *:first-child {
