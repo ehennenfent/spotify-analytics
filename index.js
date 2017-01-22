@@ -128,6 +128,8 @@ if(query.code){
     del.parentNode.removeChild(del);
     var content = document.getElementById('main');
     content.style.display = "block";
+    var head = document.getElementById('mainHeader');
+    head.innerHTML = "We're retrieving your top tracks now...";
 }
 
 auth.then(function(){
