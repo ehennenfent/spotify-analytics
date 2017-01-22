@@ -84,6 +84,9 @@ var multisort = function(sample){
     window.key.sort(function(a,b){
         return parameterCompare(a,b,'key');
     });
+
+    window.location = "#main";
+    window.scrollBy(0,-50);
 }
 
 var attach_to_dom = function(songs){
