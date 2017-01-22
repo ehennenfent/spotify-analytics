@@ -123,7 +123,8 @@ query = getQueryParams(document.location.search);
 if(query.code){
     var del = document.getElementById('delet_this');
     del.parentNode.removeChild(del);
-
+    var content = document.getElementById('main');
+    content.style.display = "block";
 }
 
 auth.then(function(){
